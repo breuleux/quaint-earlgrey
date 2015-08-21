@@ -1,0 +1,49 @@
+
+require:
+   "earlgrey/5" as eg
+   "earlgrey/lib5/util" -> GenSym
+   "earlgrey/lib5/expand" ->
+      Scope, topscope
+
+gensym = GenSym{"$eg$"}
+
+class EarlGreyEvaluator:
+   constructor{@glob, @gene, @ev, @scope} =
+      pass
+   eval{text, env = {=}, loc = null} =
+      if env == {=}:
+         let code = @gene.generate{eg.Source{text, "<repl>"}, {scope = @scope}}
+         @ev{code.code}
+      else:
+         f = @fork{}
+         items{env} each {k, v} ->
+            f.setenv{k, v}
+         f.eval{text, {=}, loc}
+   setenv{key, value} =
+      mangled = gensym{key}
+      @gene.env.bind{@scope, key, #variable{mangled}}
+      @glob[mangled] = value
+   fork{} =
+      EarlGreyEvaluator{@glob, @gene, @ev, Scope{@scope}}
+
+provide:
+   EarlGreyEvaluator
+
+provide{@, sandbox = Object.create{global}} =
+   globvar = gensym{.global}
+   let glob = sandbox
+   gene = eg.Generator with {
+      interactive = true
+      globvar = globvar
+      es5 = true
+      noboil = true
+   }
+   ev = eg.evaluator with {
+      globvar = globvar
+      global = glob
+      filename = "<repl>"
+      showname = "<repl>"
+      cwd = "<repl>"
+   }
+   @evaluator = EarlGreyEvaluator{glob, gene, ev, topscope}
+
