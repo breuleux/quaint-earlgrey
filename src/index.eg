@@ -29,21 +29,26 @@ class EarlGreyEvaluator:
 provide:
    EarlGreyEvaluator
 
-provide{@, sandbox = Object.create{global}} =
-   globvar = gensym{.global}
-   let glob = sandbox
-   gene = eg.Generator with {
-      interactive = true
-      globvar = globvar
-      es5 = true
-      noboil = true
-   }
-   ev = eg.evaluator with {
-      globvar = globvar
-      global = glob
-      filename = "<repl>"
-      showname = "<repl>"
-      cwd = "<repl>"
-   }
-   @evaluator = EarlGreyEvaluator{glob, gene, ev, topscope}
+main{*match} =
+   {[@] and {is-quaint-engine => true?}, options = {=}} ->
+      globvar = gensym{.global}
+      let glob = options.sandbox or Object.create{global}
+      gene = eg.Generator with {
+         interactive = true
+         globvar = globvar
+         es5 = true
+         noboil = true
+      }
+      ev = eg.evaluator with {
+         globvar = globvar
+         global = glob
+         filename = "<repl>"
+         showname = "<repl>"
+         cwd = "<repl>"
+      }
+      @evaluator = EarlGreyEvaluator{glob, gene, ev, topscope}
+   {options = {=}} ->
+      {@} -> main{@, options}
+
+provide = main
 
