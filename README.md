@@ -2,6 +2,12 @@
 quaint-earlgrey
 ===============
 
+Allows inline
+[Earl Grey](http://breuleux.github.io/earl-grey)
+code in
+[Quaint](http://breuleux.github.io/quaint)
+markup.
+
 Allows inline Earl Grey code in Quaint markup.
 
 Expressions in curly brackets will be evaluated using Earl Grey's
