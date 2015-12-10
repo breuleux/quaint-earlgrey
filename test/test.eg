@@ -19,14 +19,13 @@ describe "quaint integration":
       @q.setenv{"a", 555}
 
    it "simple expressions":
-      assert @q.translate{"1 + 1 = {1 + 1}", .html} === "1 + 1 = 2"
+      assert @q.toHTML{"1 + 1 = {1 + 1}"} === "1 + 1 = 2"
 
    it "more complicated expressions":
-      assert @q.translate{"{a = 6 + 6; a}", .html} === "12"
+      assert @q.toHTML{"{a = 6 + 6; a}"} === "12"
 
    it "declare and use variables":
-      assert @q.translate{"{a = 6 + 6; null}Twelve is {a}", .html} === "Twelve is 12"
+      assert @q.toHTML{"{a = 6 + 6; null}Twelve is {a}"} === "Twelve is 12"
 
    it "eg specific code":
-      assert @q.translate{"{1..5 each i -> i * i}", .html} === "1491625"
-
+      assert @q.toHTML{"{1..5 each i -> i * i}"} === "1491625"
