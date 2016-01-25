@@ -9,20 +9,21 @@
   },
   "keywords": [
     "quaint",
-    "quaintlang",
+    "quaint-plugin",
+    "quaint-language",
     "earlgrey"
   ],
   "author": "Olivier Breuleux",
   "license": "MIT",
   "main": "./lib/index.js",
   "dependencies": {
-    "earlgrey": ">=0.0.12",
+    "earlgrey": ">=0.0.13",
     "earlgrey-runtime": ">=0.0.11"
   },
   "devDependencies": {
     "mocha": "^2.2.1",
     "earl-mocha": ">=0.0.2",
-    "quaint": ">=0.0.13"
+    "quaint": ">=0.0.14"
   },
   "scripts": {
     "refresh": "earl compile -5vso lib/ src/",
