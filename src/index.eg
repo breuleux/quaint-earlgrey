@@ -32,7 +32,7 @@ provide:
 main{*match} =
    {[@] and {is-quaint-engine => true?}, options = {=}} ->
       globvar = gensym{.global}
-      let glob = options.sandbox or Object.create{global}
+      let glob = options.sandbox or global
       gene = eg.Generator with {
          interactive = true
          globvar = globvar
