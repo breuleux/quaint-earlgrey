@@ -3,7 +3,7 @@ quaint-earlgrey
 ===============
 
 Allows inline
-[Earl Grey](http://breuleux.github.io/earl-grey)
+[Earl Grey](http://earl-grey.io)
 code in
 [Quaint](http://breuleux.github.io/quaint)
 markup.
@@ -63,7 +63,7 @@ q.toHTML("{1..3 each i -> b % i * i}");
 // ==> "<b>1</b><b>4</b><b>9</b>"
 ```
 
-Some additional documentation [here](http://breuleux.github.io/earl-grey/doc.html#documentbuildingsyntax)
+Some additional documentation [here](http://earl-grey.io/doc.html#documentbuildingsyntax)
 
 
 ## Options
