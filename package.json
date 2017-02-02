@@ -1,7 +1,7 @@
 {
   "name": "quaint-earlgrey",
   "description": "Embed Earl Grey in Quaint markup.",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "format": "cjs",
   "repository": {
     "type": "git",
