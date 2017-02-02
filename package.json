@@ -17,13 +17,13 @@
   "license": "MIT",
   "main": "./lib/index.js",
   "dependencies": {
-    "earlgrey": ">=0.0.13",
-    "earlgrey-runtime": ">=0.0.11"
+    "earlgrey": "^0.1.0",
+    "earlgrey-runtime": "^0.1.0"
   },
   "devDependencies": {
     "mocha": "^2.2.1",
     "earl-mocha": ">=0.0.2",
-    "quaint": ">=0.0.14"
+    "quaint": "^0.1.0"
   },
   "scripts": {
     "refresh": "earl compile -5vso lib/ src/",
